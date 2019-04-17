@@ -6,8 +6,9 @@ import org.junit.runners.Suite.SuiteClasses;
 
 /**
  * 
- * Author : Jebin Created : 17/04/19 Test suite is created to logically group
- * the test cases together and execute in batch
+ * Author : Jebin Varghese
+ * Created : 17/04/19
+ * Test suite is created to logically group the test cases and execute in batch
  * 
  **/
 

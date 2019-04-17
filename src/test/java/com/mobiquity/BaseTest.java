@@ -6,8 +6,8 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 
 /**
  * 
- * Author : Jebin Created : 17/04/19 Any property or method that is commonly
- * used by all the tests can be defined here
+ * Author : Jebin Created : 17/04/19
+ * Any property or method that is commonly used by all the tests can be defined here
  * 
  **/
 
