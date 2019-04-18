@@ -19,7 +19,7 @@ import net.thucydides.junit.annotations.UseTestDataFrom;
  * 
  **/
 
-@WithTagValuesOf({ "type:ui", "Applicatoin:cafe Town", "Feature:Employee Creation" })
+@WithTagValuesOf({ "type:ui", "Applicatoin:cafe Town", "Feature:Employee Management" })
 @RunWith(SerenityParameterizedRunner.class)
 @UseTestDataFrom(value = "src/test/resources/employeeDetails.csv")
 public class EmployeesTest extends BaseUiTest {
