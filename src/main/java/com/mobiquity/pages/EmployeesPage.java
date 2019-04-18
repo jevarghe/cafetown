@@ -1,5 +1,8 @@
 package com.mobiquity.pages;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -38,6 +41,9 @@ public final class EmployeesPage extends BasePage {
 
 	@FindBy(id = "greetings")
 	private WebElement greetingsPlaceHolder;
+	
+	@FindBy(id = "employee-list")
+	private WebElement employeeList;
 
 	/**
 	 * 
@@ -49,7 +55,7 @@ public final class EmployeesPage extends BasePage {
 		$(logOutButton).click();
 	}
 
-	public void clickAddBtn() {
+	public void clickCreateBtn() {
 		$(addBtn).click();
 	}
 
@@ -63,6 +69,23 @@ public final class EmployeesPage extends BasePage {
 
 	public String getGreetingsText() {
 		return $(greetingsPlaceHolder).getText();
+	}
+
+	public void selectEmployee(String employeeName) {
+		List<WebElement> countriesList = employeeList.findElements(By.tagName("li"));
+		
+		countriesList.stream()
+		 .filter(element -> element.getText().contains(employeeName))
+		 .findFirst().get().click();
+	}
+
+	public boolean isEmployeePresent(String employeeName) {
+		List<WebElement> countriesList = employeeList.findElements(By.tagName("li"));
+
+		boolean isPresent = countriesList
+							.stream()
+							.anyMatch(element -> element.getText().contains(employeeName));
+		return isPresent;
 	}
 
 }

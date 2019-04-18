@@ -14,7 +14,7 @@ import net.thucydides.core.steps.ScenarioSteps;
  * 
  **/
 
-public final class EmployeesSteps extends ScenarioSteps {
+public class EmployeesSteps extends ScenarioSteps {
 
 	private static final long serialVersionUID = 1L;
 	private EmployeesPage employeesPage;
@@ -35,8 +35,8 @@ public final class EmployeesSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void clicksAddButton() {
-		employeesPage.clickAddBtn();
+	public void clicksCreateButton() {
+		employeesPage.clickCreateBtn();
 	}
 
 	@Step
@@ -47,6 +47,35 @@ public final class EmployeesSteps extends ScenarioSteps {
 	@Step
 	public void clicksDeleteButton() {
 		employeesPage.clickDeleteBtn();
+	}
+	
+	@Step
+	public void selectEmployee(String employeeName) {
+		employeesPage.selectEmployee(employeeName);
+	}
+
+	@Step
+	public void confirmEmployeeDeletion() {
+		employeesPage.acceptAlert();
+	}
+
+	@Step
+	public void verifyEmployeeInTheList(String firstName, String lastName) {
+		assert (employeesPage.isEmployeePresent(firstName + " " + lastName));
+	}
+
+	@Step
+	public void viewEmployeeDetails(String employeeName) {
+		employeesPage.selectEmployee(employeeName);
+		employeesPage.clickEditBtn();
+	}
+
+	@Step
+	public void verifyEmployeeNotInTheList(String employeeName) {
+		if (employeesPage.isEmployeePresent(employeeName) == false) {
+			assert (true);
+		}
+
 	}
 
 }

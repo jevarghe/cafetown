@@ -14,7 +14,7 @@ import net.thucydides.core.steps.ScenarioSteps;
  * 
  **/
 
-public final class CreateEmployeeSteps extends ScenarioSteps {
+public class CreateEmployeeSteps extends ScenarioSteps {
 
 	private static final long serialVersionUID = 1L;
 	private CreateEmployeePage createEmployeePage;
@@ -48,7 +48,22 @@ public final class CreateEmployeeSteps extends ScenarioSteps {
 	public void clicksAddButton() {
 		createEmployeePage.clickAddBtn();
 	}
-
 	
+	@Step
+	public void clicksUpdateButton() {
+		createEmployeePage.clickUpdateBtn();
+	}
 
+	@Step
+	public void entersEmployeeDetails(String firstName, String lastName, String startDate, String email) {
+		createEmployeePage.enterFirstName(firstName);
+		createEmployeePage.enterLastName(lastName);
+		createEmployeePage.enterStartDate(startDate);
+		createEmployeePage.enterEmail(email);
+	}
+
+	@Step
+	public void validateEmail(String email) {
+		assert(createEmployeePage.getEmail().contains(email));
+	}
 }

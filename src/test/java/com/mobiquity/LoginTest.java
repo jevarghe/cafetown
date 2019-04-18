@@ -40,27 +40,24 @@ public class LoginTest extends BaseUiTest {
 	}
 
 	@Test
-	public void TestloginWithValidCredentials() {
-		loginApi.entersUserName(userName);
-		loginApi.entersPassword(password);
+	public void Test1loginWithValidCredentials() {
+		loginApi.entersUserNameAndPassword(userName,password);
 		loginApi.clicksSubmitButton();
 		employeesApi.validatesGreetingsText("Hello Luke");
 	}
 
 	@Test
-	public void TestErrorMessageForInvalidCredentials() {
-		loginApi.entersUserName("invalidName");
-		loginApi.entersPassword("inval1dp@ssword");
+	public void Test2ErrorMessageForInvalidCredentials() {
+		loginApi.entersUserNameAndPassword("invalidName","inval1dp@ssword");
 		loginApi.clicksSubmitButton();
 		loginApi.validatesErrorText("Invalid username or password!");
 	}
 
-	@Test
-	public void TestLoginWithInvalidCredentials() {
-		loginApi.entersUserName("invalidName");
-		loginApi.entersPassword("inval1dp@ssword");
+	@Test()
+	public void Test3LoginWithInvalidCredentials() {
+		loginApi.entersUserNameAndPassword("invalidName","inval1dp@ssword");
 		loginApi.clicksSubmitButton();
-		employeesApi.validatesGreetingsText("Hello hello");
+		employeesApi.validatesGreetingsText("Hello hello");  // This is to show how the failed test cases are displayed in test results
 	}
 
 }

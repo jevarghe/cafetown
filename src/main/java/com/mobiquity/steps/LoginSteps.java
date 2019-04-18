@@ -14,7 +14,7 @@ import net.thucydides.core.steps.ScenarioSteps;
  * 
  **/
 
-public final class LoginSteps extends ScenarioSteps {
+public class LoginSteps extends ScenarioSteps {
 
 	private static final long serialVersionUID = 1L;
 	private LoginPage loginPage;
@@ -25,12 +25,8 @@ public final class LoginSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void entersUserName(String userName) {
+	public void entersUserNameAndPassword(String userName, String password) {
 		loginPage.enterUserName(userName);
-	}
-
-	@Step
-	public void entersPassword(String password) {
 		loginPage.enterPassword(password);
 	}
 
@@ -43,4 +39,5 @@ public final class LoginSteps extends ScenarioSteps {
 	public void validatesErrorText(String errorText) {
 		assert (loginPage.getErrorText().equals(errorText));
 	}
+
 }

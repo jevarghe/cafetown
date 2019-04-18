@@ -3,6 +3,7 @@ package com.mobiquity.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
@@ -41,6 +42,23 @@ public abstract class BasePage extends PageObject {
 		}
 		Select select = new Select(FindElement(by));
 		select.selectByVisibleText(option);
+	}
+	
+	public String getAlertText() {
+		return getDriver().switchTo().alert().getText();
+	}
+	
+	public void acceptAlert() {
+		getDriver().switchTo().alert().accept();
+	}
+	
+	public void cancelAlert() {
+		getDriver().switchTo().alert().dismiss();
+	}
+	
+	public void doubleClick(WebElement element) {
+		Actions actions = new Actions(getDriver());
+		actions.doubleClick(element).perform();
 	}
 
 }

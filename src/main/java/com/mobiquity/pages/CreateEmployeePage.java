@@ -38,6 +38,9 @@ public final class CreateEmployeePage extends BasePage {
 
 	@FindBy(css = "body > div > div > div > form > fieldset > div > button:nth-child(2)")
 	private WebElement addButton;
+	
+	@FindBy(css = "body > div > div > div > form > fieldset > div > button:nth-child(1)")
+	private WebElement updateButton;
 
 	/**
 	 * 
@@ -63,5 +66,13 @@ public final class CreateEmployeePage extends BasePage {
 
 	public void clickAddBtn() {
 		$(addButton).click();
+	}
+	
+	public void clickUpdateBtn() {
+		$(updateButton).click();
+	}
+
+	public String getEmail() {
+		return $(emailInput).getAttribute("value");
 	}
 }
