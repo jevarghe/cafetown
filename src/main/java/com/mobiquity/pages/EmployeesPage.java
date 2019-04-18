@@ -79,10 +79,7 @@ public final class EmployeesPage extends BasePage {
 	public void selectEmployee(String employeeName) {
 		List<WebElement> countriesList = employeeList.findElements(By.tagName("li"));
 
-		countriesList
-				.stream()
-				.filter(element -> element.getText().contains(employeeName))
-				.findFirst().get().click();
+		countriesList.stream().filter(element -> element.getText().contains(employeeName)).findFirst().get().click();
 	}
 
 	/**
@@ -92,9 +89,7 @@ public final class EmployeesPage extends BasePage {
 	public boolean isEmployeePresent(String employeeName) {
 		List<WebElement> countriesList = employeeList.findElements(By.tagName("li"));
 
-		boolean isPresent = countriesList
-								.stream()
-								.anyMatch(element -> element.getText().contains(employeeName));
+		boolean isPresent = countriesList.stream().anyMatch(element -> element.getText().contains(employeeName));
 		return isPresent;
 	}
 
