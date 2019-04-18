@@ -71,20 +71,30 @@ public final class EmployeesPage extends BasePage {
 		return $(greetingsPlaceHolder).getText();
 	}
 
+	/**
+	 * This method checks in the employee list for the given employee name and
+	 * brings the focus to the record
+	 */
+
 	public void selectEmployee(String employeeName) {
 		List<WebElement> countriesList = employeeList.findElements(By.tagName("li"));
-		
-		countriesList.stream()
-		 .filter(element -> element.getText().contains(employeeName))
-		 .findFirst().get().click();
+
+		countriesList
+				.stream()
+				.filter(element -> element.getText().contains(employeeName))
+				.findFirst().get().click();
 	}
+
+	/**
+	 * This method checks if an employee record is present in the employee list
+	 */
 
 	public boolean isEmployeePresent(String employeeName) {
 		List<WebElement> countriesList = employeeList.findElements(By.tagName("li"));
 
 		boolean isPresent = countriesList
-							.stream()
-							.anyMatch(element -> element.getText().contains(employeeName));
+								.stream()
+								.anyMatch(element -> element.getText().contains(employeeName));
 		return isPresent;
 	}
 

@@ -21,7 +21,7 @@ import net.thucydides.junit.annotations.UseTestDataFrom;
 @WithTagValuesOf({ "type:ui", "Applicatoin:cafe Town", "Feature:Login" })
 @RunWith(SerenityParameterizedRunner.class)
 @UseTestDataFrom(value = "src/test/resources/credentials.csv")
-public class LoginTest extends BaseUiTest {
+public class AuthenticationTest extends BaseUiTest {
 
 	private String userName;
 	private String password;
@@ -38,26 +38,40 @@ public class LoginTest extends BaseUiTest {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	/**
+	 * Test to validate the login functionality with valid credentials  
+	 * Test data is read from the external data source.
+	 */
 
 	@Test
-	public void Test1loginWithValidCredentials() {
-		loginApi.entersUserNameAndPassword(userName,password);
+	public void test1loginWithValidCredentials() {
+		loginApi.entersUserNameAndPassword(userName, password);
 		loginApi.clicksSubmitButton();
 		employeesApi.validatesGreetingsText("Hello Luke");
 	}
 
+	/**
+	 * Test to validate the error message when invalid credentials are used for login  
+	 */
+	
 	@Test
-	public void Test2ErrorMessageForInvalidCredentials() {
-		loginApi.entersUserNameAndPassword("invalidName","inval1dp@ssword");
+	public void test2ErrorMessageForInvalidCredentials() {
+		loginApi.entersUserNameAndPassword("invalidName", "inval1dp@ssword");
 		loginApi.clicksSubmitButton();
 		loginApi.validatesErrorText("Invalid username or password!");
 	}
 
+	/**
+	 * Test to check if Greetings text are displayed for invalid credentials
+	 * This test is intended to fail.  
+	 * This test is to show how the failed test cases are displayed in test results
+	 */
+	
 	@Test()
-	public void Test3LoginWithInvalidCredentials() {
-		loginApi.entersUserNameAndPassword("invalidName","inval1dp@ssword");
+	public void test3LoginWithInvalidCredentials() {
+		loginApi.entersUserNameAndPassword("invalidName", "inval1dp@ssword");
 		loginApi.clicksSubmitButton();
-		employeesApi.validatesGreetingsText("Hello hello");  // This is to show how the failed test cases are displayed in test results
+		employeesApi.validatesGreetingsText("Hello hello");
 	}
-
 }

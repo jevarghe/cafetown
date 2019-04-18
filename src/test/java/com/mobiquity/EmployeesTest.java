@@ -57,8 +57,14 @@ public class EmployeesTest extends BaseUiTest {
 		this.newEmail = newEmail;
 	}
 
+	/**
+	 * Test to verify the successful creation of employee 
+	 * test steps are added to feed the employee data from external data source
+	 * and finally verify that newly created employee is in the list
+	 */
+	
 	@Test
-	public void test1CreateEmployees() {
+	public void test4CreateEmployees() {
 		loginApi.entersUserNameAndPassword("Luke", "Skywalker");
 		loginApi.clicksSubmitButton();
 		employeesApi.validatesGreetingsText("Hello Luke");
@@ -66,11 +72,20 @@ public class EmployeesTest extends BaseUiTest {
 		creationApi.entersEmployeeDetails(firstName, lastName, startDate, email);
 		creationApi.clicksAddButton();
 		employeesApi.verifyEmployeeInTheList(firstName, lastName);
-
 	}
 
+	/**
+	 * Test to verify the editing an employee details 
+	 * test steps are added to feed the employee data from external data source
+	 * and finally verify that edited details are reflected to the employee record
+	 * 
+	 * This test is dependent on the previous test, so failure in the first test will result in failure of this
+	 * Best approach is to create test data prior to testing and use them for automation.
+	 * Using this approach as no optimal solution is found to create Test Data for Automation.
+	 */
+
 	@Test
-	public void test2EditEmployees() {
+	public void test5EditEmployees() {
 		loginApi.entersUserNameAndPassword("Luke", "Skywalker");
 		loginApi.clicksSubmitButton();
 		employeesApi.validatesGreetingsText("Hello Luke");
@@ -82,8 +97,17 @@ public class EmployeesTest extends BaseUiTest {
 		creationApi.validateEmail(newEmail);
 	}
 
+	/**
+	 * Test to verify deleting an employee record 
+	 * test steps are added to feed the employee data from external data source
+	 * (Employees created in previous steps are deleted in this test. These tests are dependent
+	 * on the previous tests so not the best approach. For the time being, implementing test cases
+	 * that are dependent on the previous one)
+	 * and finally verify that edited details are reflected to the employee record
+	 */
+	
 	@Test
-	public void test3DeleteEmployees() {
+	public void test6DeleteEmployees() {
 		loginApi.entersUserNameAndPassword("Luke", "Skywalker");
 		loginApi.clicksSubmitButton();
 		employeesApi.validatesGreetingsText("Hello Luke");
@@ -92,5 +116,4 @@ public class EmployeesTest extends BaseUiTest {
 		employeesApi.confirmEmployeeDeletion();
 		employeesApi.verifyEmployeeNotInTheList(firstName + " " + lastName);
 	}
-
 }

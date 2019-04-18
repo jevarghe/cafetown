@@ -3,10 +3,8 @@ package com.mobiquity.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-
 import net.thucydides.core.pages.PageObject;
 
 /**
@@ -45,6 +43,9 @@ public abstract class BasePage extends PageObject {
 	}
 	
 	public String getAlertText() {
+		try{ 
+			Thread.sleep(200);
+		}catch(Exception e) {}
 		return getDriver().switchTo().alert().getText();
 	}
 	
@@ -55,10 +56,4 @@ public abstract class BasePage extends PageObject {
 	public void cancelAlert() {
 		getDriver().switchTo().alert().dismiss();
 	}
-	
-	public void doubleClick(WebElement element) {
-		Actions actions = new Actions(getDriver());
-		actions.doubleClick(element).perform();
-	}
-
 }

@@ -66,4 +66,9 @@ public class CreateEmployeeSteps extends ScenarioSteps {
 	public void validateEmail(String email) {
 		assert(createEmployeePage.getEmail().contains(email));
 	}
+
+	@Step
+	public void validateErrorText(String errorText) {
+		assert(createEmployeePage.getAlertText().equals(errorText));		
+	}
 }

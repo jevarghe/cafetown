@@ -13,7 +13,9 @@ import org.junit.runners.Suite.SuiteClasses;
  **/
 
 @RunWith(Suite.class)
-@SuiteClasses({ LoginTest.class })
+@SuiteClasses({ AuthenticationTest.class, 
+				EmployeesTest.class,
+				DataValidationTest.class })
 
 public class AcceptanceTestSuite {
 
